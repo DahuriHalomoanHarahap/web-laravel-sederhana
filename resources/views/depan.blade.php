@@ -3,6 +3,7 @@
     $location= get_setting_value('_location');
     $site_description= get_setting_value('_site_description');
     $jumbotron = get_section_data('Jumbotron');
+    $about_us = get_section_data('about');
 
     $youtube= get_setting_value('_youtube');
     $instagram= get_setting_value('_instagram');
@@ -93,7 +94,7 @@
     <section class="page-section bg-primary text-white mb-0" id="about">
       <div class="container">
         <!-- About Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
+        <h2 class="page-section-heading text-center text-uppercase text-white">{{ $about_us->title }}</h2>
         <!-- Icon Divider-->
         <div class="divider-custom divider-light">
           <div class="divider-custom-line"></div>
@@ -101,11 +102,10 @@
           <div class="divider-custom-line"></div>
         </div>
         <!-- About Section Content-->
-        <div class="row">
-          <div class="col-lg-3 ms-auto text-center"><img src="template-home-page/assets/img/about.png" class="w-75" /></div>
+        <div class="row align-items-center">
+          <div class="col-lg-3 ms-auto text-center"><img src="{{ Storage::url($about_us->thumbnail) }}" class="w-100 mb-4 mb-lg-0" /></div>
           <div class="col-lg-5 me-auto lead">
-            <p>Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p>
-            <p>You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p>
+            {!! strip_tags($about_us->content) !!}
           </div>
         </div>
       </div>
